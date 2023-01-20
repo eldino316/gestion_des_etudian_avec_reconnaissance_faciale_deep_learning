@@ -10,16 +10,16 @@
 <section class="py-1">
     <div class="row mt-5">
         <div class="col-lg-8 offset-lg-2">
-            <h3>Personnel Data</h3>
+            <h3>Liste des étudiants</h3>
             <hr>
             <div class="row">
                 <div class="col-lg-4">
-                    <a href="/addprsn" type="button" class="btn btn-success btn-lg"><b>Hisoratra Anarana</b></a>
+                    <a href="/addprsn" type="button" class="btn btn-success btn-lg"><b>S'inscrire</b></a>
                 </div>
                 <div class="col-lg-2">
                 </div>
                 <div class="col-lg-4">
-                    <a href="/fr_page" type="button" class="btn btn-info btn-lg"><b>Hamantatra</b></a>
+                    <a href="/fr_page" type="button" class="btn btn-info btn-lg"><b>Detecter</b></a>
                 </div>
             </div>
 
@@ -27,11 +27,16 @@
             <table class="table" style="width: 80%">
                 <thead>
                     <tr>
-                        <th>Person Id</th>
-                        <th>Anarana feno</th>
-                        <th>Sehatra</th>
-                        <th>Famantarana</th>
-                        <th>Ora nidirana</th>
+                        <th>Identifiant</th>
+                        <th>Nom</th>
+                        <th>Parcours</th>
+                        <th>Matricule</th>
+                        <th>Télephone</th>
+                        <th>Niveau</th>
+                        <th>Prenom</th>
+                        <th>address</th>
+                        <th>Active</th>
+                        <th>Date d'ajout</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,6 +47,11 @@
                             <td>{{item[2]}}</td>
                             <td>{{item[3]}}</td>
                             <td>{{item[4]}}</td>
+                            <td>{{item[5]}}</td>
+                            <td>{{item[6]}}</td>
+                            <td>{{item[7]}}</td>
+                            <td>{{item[8]}}</td>
+                            <td>{{item[9]}}</td>
                         </tr>
                     {% endfor %}
                 </tbody>

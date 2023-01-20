@@ -193,7 +193,7 @@ def face_recognition():  # generate frame by frame from camera
  
 @app.route('/')
 def home():
-    mycursor.execute("select prs_nbr, prs_name, prs_skill, prs_active, prs_added from prs_mstr")
+    mycursor.execute("select prs_nbr, prs_name, prs_skill, prs_mat, prs_num, prs_niveau, prs_prenom, prs_addr, prs_active, prs_added from prs_mstr")
     data = mycursor.fetchall()
  
     return render_template('index.html', data=data)
@@ -212,9 +212,14 @@ def addprsn_submit():
     prsnbr = request.form.get('txtnbr')
     prsname = request.form.get('txtname')
     prsskill = request.form.get('optskill')
+    prsmat = request.form.get('txtmat')
+    prsnum = request.form.get('txtnum')
+    prsniv = request.form.get('txtniv')
+    prspren = request.form.get('txtprenom')
+    prsaddr = request.form.get('txtaddr')
  
-    mycursor.execute("""INSERT INTO `prs_mstr` (`prs_nbr`, `prs_name`, `prs_skill`) VALUES
-                    ('{}', '{}', '{}')""".format(prsnbr, prsname, prsskill))
+    mycursor.execute("""INSERT INTO `prs_mstr` (`prs_nbr`, `prs_name`, `prs_skill`, `prs_mat`, `prs_num`, `prs_niveau`, `prs_prenom`, `prs_addr`) VALUES
+                    ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}')""".format(prsnbr, prsname, prsskill, prsmat, prsnum, prsniv, prspren, prsaddr))
     mydb.commit()
  
     # return redirect(url_for('home'))

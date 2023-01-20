@@ -10,7 +10,7 @@
 <section class="py-1">
     <div class="row mt-5">
         <div class="col-lg-8 offset-lg-2">
-            <h3>Hisoratra Anarana</h3>
+            <h3>Formulaire d'inscription</h3>
             <hr>
             <form class="form" method="post" action="/addprsn_submit">
                 <div class="form-group row">
@@ -20,26 +20,56 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="txtname" class="col-sm-2 col-form-label">Anarana feno</label>
+                    <label for="txtniv" class="col-sm-2 col-form-label">Niveau</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="txtname" name="txtniv" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="txtmat" class="col-sm-2 col-form-label">Numero matricule</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="txtmat" name="txtmat" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="txtname" class="col-sm-2 col-form-label">Nom</label>
                     <div class="col-sm-8">
                         <input type="text" class="form-control" id="txtname" name="txtname" required>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="optskill" class="col-sm-2 col-form-label">Sehatra</label>
+                    <label for="txtprenom" class="col-sm-2 col-form-label">Prénom</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="txtprenom" name="txtprenom" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="optskill" class="col-sm-2 col-form-label">Parcours</label>
                     <div class="col-sm-4">
                         <select class="form-control" name="optskill" id="optskill">
-                            <option value="SOFTWARE">Administration Système et Réseau</option>
-                            <option value="HARDWARE">Génie logiciel et Base de données</option>
-                            <option value="ELECTRICAL">Informatique Génerale</option>
+                            <option value="Administration Système et Réseau">Administration Système et Réseau</option>
+                            <option value="Génie logiciel et Base de données">Génie logiciel et Base de données</option>
+                            <option value="Informatique Génerale">Informatique Génerale</option>
                         </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="txtaddr" class="col-sm-2 col-form-label">Adresse</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="txtaddr" name="txtaddr" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="txtnum" class="col-sm-2 col-form-label">Numero téléphone</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="txtnum" name="txtnum" required>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label"></label>
                     <div class="col-sm-8">
                         <input type="submit" class="btn btn-primary btn-lg" value="Next">
-                        <a href="/" type="button" class="btn btn-warning btn-lg"><b>Hiverina</b></a>
+                        <a href="/" type="button" class="btn btn-warning btn-lg"><b>Précedent</b></a>
                     </div>
                 </div>
             </form>
