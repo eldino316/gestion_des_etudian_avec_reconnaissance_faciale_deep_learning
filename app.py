@@ -206,7 +206,10 @@ def login():
             else:
                 mycursor.execute('SELECT nom_niveau FROM niveau')
                 niveau = mycursor.fetchall()
-                return render_template('home.html', niveau=niveau)    
+                mycursor.execute('SELECT nom_parcours FROM parcours')
+                parcours = mycursor.fetchall()
+                
+                return render_template('home.html', niveau=niveau, parcours=parcours)    
         else :
             msg = 'Il y a une erreure, veuillez verifier votre identifiant'
     return render_template('login.html', msg=msg)            
