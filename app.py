@@ -117,7 +117,7 @@ def face_recognition():  # generate frame by frame from camera
             id, pred = clf.predict(gray_image[y:y + h, x:x + w])
             confidence = int(100 * (1 - pred / 300))
  
-            if confidence > 70 and not justscanned:
+            if confidence > 76 and not justscanned:
                 global cnt
                 cnt += 1
  
@@ -153,7 +153,7 @@ def face_recognition():  # generate frame by frame from camera
  
             else:
                 if not justscanned:
-                    cv2.putText(img, 'UNKNOWN', (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 2, cv2.LINE_AA)
+                    cv2.putText(img, 'INCONNU', (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 2, cv2.LINE_AA)
                 else:
                     cv2.putText(img, ' ', (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 2,cv2.LINE_AA)
  
@@ -189,14 +189,51 @@ def face_recognition():  # generate frame by frame from camera
         if key == 27:
             break
  
- 
- 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
+def login():
+    msg = ''
+    if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
+        username = request.form['username']
+        password = request.form['password']
+
+        mycursor.execute('SELECT * FROM dlge_db WHERE username = %s AND password = %s', (username, password,))
+
+        account = mycursor.fetchone()
+
+        if account:
+            if username == "admin@root.eni":
+                return render_template('admin.html')
+            else:
+                mycursor.execute('SELECT nom_niveau FROM niveau')
+                niveau = mycursor.fetchall()
+                return render_template('home.html', niveau=niveau)    
+        else :
+            msg = 'Il y a une erreure, veuillez verifier votre identifiant'
+    return render_template('login.html', msg=msg)            
+
+@app.route('/sceance', methods=['GET', 'POST'])
+def sceance():
+    if request.method == 'POST' and 'mat' in request.form and 'prof' in request.form and 'date' in request.form and 'time1' in request.form and 'time2' in request.form and 'niveau' in request.form and 'parcours' in request.form and 'salle' in request.form:
+        mat = request.form['mat']
+        prof = request.form['prof']
+        date = request.form['date']
+        time1 = request.form['time1']
+        time2 = request.form['time2']
+        niveau = request.form['niveau']
+        parcours = request.form['parcours']
+        salle = request.form['salle']
+
+
+        
+         
+
+
+@app.route('/admin')
 def home():
     mycursor.execute("select prs_nbr, prs_name, prs_skill, prs_mat, prs_num, prs_niveau, prs_prenom, prs_addr, prs_active, prs_added from prs_mstr")
     data = mycursor.fetchall()
  
-    return render_template('index.html', data=data)
+    return render_template('index.html')
  
 @app.route('/addprsn')
 def addprsn():
@@ -206,6 +243,20 @@ def addprsn():
     # print(int(nbr))
  
     return render_template('addprsn.html', newnbr=int(nbr))
+
+@app.route('/ajout', methods=['POST'])
+def ajout():
+    name = request.form.get('name')
+    prenom = request.form.get('prenom')
+    matricule = request.form.get('matricule')
+    niveau = request.form.get('niveau')
+    parcours = request.form.get('parcours')
+
+    if niveau == "L1":
+        mycursor.execute("""INSERT INTO `l1_DB`""")
+
+
+
  
 @app.route('/addprsn_submit', methods=['POST'])
 def addprsn_submit():
@@ -290,6 +341,7 @@ def loadData():
     data = mycursor.fetchall()
  
     return jsonify(response = data)
- 
+
+
 if __name__ == "__main__":
-    app.run(host='127.0.0.1', port=5000, debug=True)
+    app.run(host='127.0.0.1', port=5001, debug=True)

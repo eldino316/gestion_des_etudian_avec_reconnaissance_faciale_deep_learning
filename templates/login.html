@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/w3.css') }}" type="text/css">
+
+<body class="w3-content" style="max-width:900px">
+
+<div class="w3-display-middle w3-card-4">   
+<div class="w3-cell-row">
+<form class="w3-container w3-cell" action="{{ url_for('login') }}" method="post">
+     <div class="w3-container w3-center">
+        <img src="{{ url_for('static', filename='img/logoENI.png') }}" alt="Avatar" style="width:15%;min-width:70px" class="w3-circle w3-margin-top">
+    </div><br>
+    <input type="username" name="username" class="w3-input w3-center" type="text" placeholder="Identifiant" required pattern="(+@L1.eni)|(+@L2.eni)|(+@L3.eni)|(+@M1.eni)|(+@M2.eni)"></br>
+    <input type="password" name="password"  pattern=".{5,15}" required title="5 to 15 characters" class="w3-input w3-center" type="text" placeholder="**********"></br>
+
+    <div class="w3-container w3-center">
+        <button type="submit" value="login" class="w3-button w3-round-xxlarge w3-green" style="width:40%;min-width: 110px">se connecter</button>
+        <div class="msg">{{ msg }}</div>
+    </div></br>
+</form>
+<div class="w3-container w3-green w3-cell">
+    <h3 class="w3-text">"La pépinière de l'Informatique Malagasy"</h3></br>
+
+</div>
+</div>
+
+</div>
+
+</body>
+</html>

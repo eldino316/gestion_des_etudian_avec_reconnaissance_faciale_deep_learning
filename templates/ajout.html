@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/w3.css') }}" type="text/css">
+
+<body class="w3-content" style="max-width:900px">
+
+<div class="w3-display-middle w3-card-4">   
+<div class="w3-cell-row">
+<form class="w3-container w3-cell" action="" method="post">
+     <div class="w3-container w3-center">
+        <img src="{{ url_for('static', filename='img/logoENI.png') }}" alt="Avatar" style="width:15%;min-width:70px" class="w3-circle w3-margin-top">
+    </div><br>
+    <input type="mat" name="mat" class="w3-input w3-center" type="text" placeholder="nom de la matière" required></br>
+    <input type="prof" name="prof" class="w3-input w3-center" type="text" placeholder="nom de l'instituteur" required></br>
+    <input class="w3-input w3-center" type="date" name="date" placeholder="date du cours" required></br>
+    <input type="time" name="time1" class="w3-input w3-center" required></br>
+    <input type="time" name="time2" class="w3-input w3-center" required></br>
+    <select class="w3-select w3-center" name="option">
+      <option value="niveau" disabled selected>Niveau</option>
+      <option value="L1">L1</option>
+      <option value="L2">L2</option>
+      <option value="L3">L3</option>
+      <option value="M1">M1</option>
+      <option value="M2">M2</option>
+    </select></br></br>
+    <select class="w3-select w3-center" name="option">
+      <option value="parcours" disabled selected>Parcours</option>
+      <option value="ASR">Administrateur systèm et réseau</option>
+      <option value="GB">Génie logiciel et base de donnée</option>
+      <option value="IG">Informatique générale</option>
+    </select></br></br>
+    <input type="salle" name="salle" class="w3-input w3-center" type="text" placeholder="salle" required></br>
+    <div class="w3-container w3-center">
+        <button type="submit" value="login" class="w3-button w3-round-xxlarge w3-blue" style="width:40%;min-width: 110px">commencer</button>
+    </div></br>
+</form>
+<div class="w3-container w3-blue w3-cell">
+    <h3 class="w3-text">"La pépinière de l'Informatique Malagasy"</h3></br>
+
+</div>
+</div>
+
+</div>
+
+</body>
+</html>
